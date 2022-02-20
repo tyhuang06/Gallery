@@ -32,9 +32,10 @@ func main() {
 
 	r := mux.NewRouter()
 
-	r.HandleFunc("/", homeHandler)
-	r.HandleFunc("/contact", contactHandler)
-	r.HandleFunc("/signup", usersC.New)
+	r.HandleFunc("/", homeHandler).Methods("GET")
+	r.HandleFunc("/contact", contactHandler).Methods("GET")
+	r.HandleFunc("/signup", usersC.New).Methods("GET")
+	r.HandleFunc("/signup", usersC.Create).Methods("POST")
 
 	fmt.Println("Starting the server on :3000...")
 	http.ListenAndServe(":3000", r)

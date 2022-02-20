@@ -1,6 +1,7 @@
 package controllers
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/tyhuang06/Gallery/views"
@@ -18,6 +19,16 @@ type Users struct {
 	NewView *views.View
 }
 
+// Render the form for creating a new user account
+//
+// GET /signup
 func (u *Users) New(w http.ResponseWriter, r *http.Request) {
 	u.NewView.Render(w, nil)
+}
+
+// Process the signup form when submitted
+//
+// POST /signup
+func (u *Users) Create(w http.ResponseWriter, r *http.Request) {
+	fmt.Fprintln(w, "temporary response")
 }
